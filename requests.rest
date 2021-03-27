@@ -1,0 +1,88 @@
+GET http://localhost:8080/products
+
+###
+
+POST http://localhost:8080/products/caps
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "Red Cap",
+  "price": 500,
+  "color": "red",
+  "size": "M"
+}
+
+###
+
+POST http://localhost:8080/products/books
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "Anna Karenina",
+  "price": 900,
+  "author": "Tolstoy"
+}
+
+###
+
+POST http://localhost:8080/products/iphones
+Content-Type: application/json
+
+{"id": 0,
+  "name": "Iphone",
+  "price": 50000,
+  "operatingSystem": "ios",
+  "memorySize": 64
+}
+
+###
+
+POST http://localhost:8080/products/laptops
+Content-Type: application/json
+
+{"id": 0,
+  "name": "Acer",
+  "price": 65000,
+  "processor": "AMD Radeon",
+  "capacitySSD": 256
+}
+
+###
+
+GET http://localhost:8080/products/search?text=anna
+
+###
+
+GET http://localhost:8080/products/search?text=tolstoy
+
+###
+
+GET http://localhost:8080/products/catalog/books
+
+###
+
+GET http://localhost:8080/products/catalog/caps
+
+###
+
+GET http://localhost:8080/products/catalog/iphones
+
+###
+
+GET http://localhost:8080/products/catalog/laptops
+
+###
+
+PUT http://localhost:8080/products/caps
+Content-Type: application/json
+
+{"color": "Black",
+  "size": "S"
+}
+
+###
+
+DELETE http://localhost:8080/products/books
+
