@@ -41,7 +41,7 @@ public class ProductController {
     public void add(@RequestBody Laptop product) {
         manager.add(product);
     }
-    @PutMapping("/{type}")
+    @PutMapping("/{caps}")
     public Product update(@PathVariable String type, @RequestBody Product product) {
         return manager.update(type, product);
     }

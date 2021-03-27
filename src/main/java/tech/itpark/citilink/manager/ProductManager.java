@@ -5,7 +5,7 @@ import tech.itpark.citilink.domain.*;
 import java.util.ArrayList;
 
 public class ProductManager {
-    private long nextId = 1;
+    //private long nextId = 1;
     private ArrayList<Product> items = new ArrayList<>();
 
 
@@ -82,6 +82,7 @@ public class ProductManager {
     }
 
     public Product update(String type, Product product) {
+        //ArrayList<Product> result = new ArrayList<>();
         for (Product item : items) {
             if (type.equals("caps") && item instanceof Cap) {
                 Cap cap = (Cap) item;
@@ -111,10 +112,12 @@ public class ProductManager {
         return null;
     }
 
+
     public void removed(String type) {
         for (Product item : items) {
-            if (item.getName() == type) {
-            item.setRemoved(true);
+            if (type.equals("books") && item instanceof Book) {
+                Book book = (Book) item;
+                item.setRemoved(true);
             }
         }
     }
