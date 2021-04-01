@@ -6,10 +6,9 @@ POST http://localhost:8080/products/caps
 Content-Type: application/json
 
 {
-  "id": 0,
-  "name": "Red Cap",
+  "name": "Nike",
   "price": 500,
-  "color": "red",
+  "color": "green",
   "size": "M"
 }
 
@@ -19,10 +18,10 @@ POST http://localhost:8080/products/books
 Content-Type: application/json
 
 {
-  "id": 0,
   "name": "Anna Karenina",
   "price": 900,
-  "author": "Tolstoy"
+  "author": "Tolstoy",
+  "pagesCount": 780
 }
 
 ###
@@ -30,8 +29,7 @@ Content-Type: application/json
 POST http://localhost:8080/products/iphones
 Content-Type: application/json
 
-{"id": 0,
-  "name": "Iphone",
+{ "name": "Iphone",
   "price": 50000,
   "operatingSystem": "ios",
   "memorySize": 64
@@ -42,8 +40,7 @@ Content-Type: application/json
 POST http://localhost:8080/products/laptops
 Content-Type: application/json
 
-{"id": 0,
-  "name": "Acer",
+{ "name": "Acer",
   "price": 65000,
   "processor": "AMD Radeon",
   "capacitySSD": 256
@@ -56,6 +53,10 @@ GET http://localhost:8080/products/search?text=anna
 ###
 
 GET http://localhost:8080/products/search?text=tolstoy
+
+###
+
+GET http://localhost:8080/products/search?text=nike
 
 ###
 
@@ -75,14 +76,15 @@ GET http://localhost:8080/products/catalog/laptops
 
 ###
 
-PUT http://localhost:8080/products/caps
+PUT http://localhost:8080/products/1
 Content-Type: application/json
 
-{"color": "Black",
-  "size": "S"
+{
+  "name": "Red",
+  "price": 670
 }
 
 ###
 
-DELETE http://localhost:8080/products/books
+DELETE http://localhost:8080/products/2
 

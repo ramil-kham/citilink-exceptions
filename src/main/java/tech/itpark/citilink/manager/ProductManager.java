@@ -5,7 +5,7 @@ import tech.itpark.citilink.domain.*;
 import java.util.ArrayList;
 
 public class ProductManager {
-    //private long nextId = 1;
+    private long nextId = 1;
     private ArrayList<Product> items = new ArrayList<>();
 
 
@@ -49,7 +49,6 @@ public class ProductManager {
         return result;
     }
 
-
     private boolean contains(String field, String target) {
         return field.toLowerCase().contains(target);
     }
@@ -71,54 +70,86 @@ public class ProductManager {
             }
             if (type.equals("laptops") && item instanceof Laptop) {
                 result.add(item);
-                continue;
+//                continue;
             }
         }
         return result;
     }
 
-    public void add(Product product) {
-        items.add(product);
+    public void add(Cap product) {
+        Cap cap = new Cap(
+                nextId++,
+                product.getName(),
+                product.getPrice(),
+                false,
+                product.getColor(),
+                product.getSize()
+        );
+        items.add(cap);
     }
 
-    public Product update(String type, Product product) {
-        //ArrayList<Product> result = new ArrayList<>();
+    public void add(Book product) {
+        Book book = new Book(
+                nextId++,
+                product.getName(),
+                product.getPrice(),
+                false,
+                product.getAuthor(),
+                product.getPagesCount()
+        );
+        items.add(book);
+    }
+
+    public void add(Iphone product) {
+        Iphone iphone = new Iphone(
+                nextId++,
+                product.getName(),
+                product.getPrice(),
+                false,
+                product.getOperatingSystem(),
+                product.getMemorySize()
+        );
+        items.add(iphone);
+    }
+
+    public void add(Laptop product) {
+        Laptop laptop = new Laptop(
+                nextId++,
+                product.getName(),
+                product.getPrice(),
+                false,
+                product.getProcessor(),
+                product.getCapacitySSD()
+        );
+        items.add(laptop);
+    }
+
+    public Product updateById(long id, ProductUpdate dto) {
         for (Product item : items) {
-            if (type.equals("caps") && item instanceof Cap) {
-                Cap cap = (Cap) item;
-                ((Cap) item).setColor(cap.getColor());
-                ((Cap) item).setSize(cap.getSize());
-                return item;
-            }
-            if (type.equals("books") && item instanceof Book) {
-                Book book = (Book) item;
-                ((Book) item).setAuthor(book.getAuthor());
-                ((Book) item).setPagesCount(book.getPagesCount());
-                return item;
-            }
-            if (type.equals("iphones") && item instanceof Iphone) {
-                Iphone iphone = (Iphone) item;
-                ((Iphone) item).setOperatingSystem(iphone.getOperatingSystem());
-                ((Iphone) item).setMemorySize(iphone.getMemorySize());
-                return item;
-            }
-            if (type.equals("laptops") && item instanceof Laptop) {
-                Laptop laptop = (Laptop) item;
-                ((Laptop) item).setCapacitySSD(laptop.getCapacitySSD());
-                ((Laptop) item).setProcessor(laptop.getProcessor());
+            if (item.getId() == id) {
+                item.setName(dto.getName());
+                item.setPrice(dto.getPrice());
                 return item;
             }
         }
         return null;
     }
 
-
-    public void removed(String type) {
+    public void removed(long id) {
         for (Product item : items) {
-            if (type.equals("books") && item instanceof Book) {
-                Book book = (Book) item;
+            if (item.getId() == id) {
                 item.setRemoved(true);
+                return;
             }
         }
+    }
+
+    public Product getById(long id) {
+        for (Product item : items) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
     }
 }

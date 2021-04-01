@@ -16,7 +16,6 @@ public class ProductController {
     public ArrayList<Product> getAll() {
         return manager.getAll();
     }
-
     @GetMapping("/search")
     public ArrayList<Product> search(@RequestParam String text) {
         return manager.search(text);
@@ -27,7 +26,7 @@ public class ProductController {
     }
     @PostMapping("/caps")
     public void add(@RequestBody Cap product) {
-        manager.add(product);
+         manager.add(product);
     }
     @PostMapping("/books")
     public void add(@RequestBody Book product) {
@@ -41,12 +40,16 @@ public class ProductController {
     public void add(@RequestBody Laptop product) {
         manager.add(product);
     }
-    @PutMapping("/{caps}")
-    public Product update(@PathVariable String type, @RequestBody Product product) {
-        return manager.update(type, product);
+    @GetMapping("/{id}")
+    public Product getById(@PathVariable long id) {
+        return  manager.getById(id);
     }
-    @DeleteMapping("{type}")
-    public void removed(@PathVariable String type) {
-        manager.removed(type);
+    @PutMapping("/{id}")
+    public Product updateById(@PathVariable long id, @RequestBody ProductUpdate dto) {
+        return manager.updateById(id, dto);
+    }
+    @DeleteMapping("{id}")
+    public void removed(@PathVariable long id) {
+        manager.removed(id);
     }
 }
