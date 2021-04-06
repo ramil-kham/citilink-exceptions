@@ -76,7 +76,7 @@ GET http://localhost:8080/products/catalog/laptops
 
 ###
 
-PUT http://localhost:8080/products/1
+PUT http://localhost:8080/products/4
 Content-Type: application/json
 
 {
@@ -86,5 +86,14 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8080/products/2
+DELETE http://localhost:8080/products/7
+
+
+
+
+
+
+
+
+
 

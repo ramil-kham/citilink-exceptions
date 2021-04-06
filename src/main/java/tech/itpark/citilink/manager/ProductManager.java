@@ -3,18 +3,19 @@ package tech.itpark.citilink.manager;
 import tech.itpark.citilink.domain.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProductManager {
     private long nextId = 1;
-    private ArrayList<Product> items = new ArrayList<>();
+    private List<Product> items = new ArrayList<>();
 
 
-    public ArrayList<Product> getAll() {
+    public List<Product> getAll() {
         return items;
     }
 
-    public ArrayList<Product> search(String text) {
-        ArrayList<Product> result = new ArrayList<>();
+    public List<Product> search(String text) {
+        List<Product> result = new ArrayList<>();
         String target = text.trim().toLowerCase();
         for (Product item : items) {
             if (contains(item.getName(),target)) {
@@ -47,14 +48,15 @@ public class ProductManager {
             }
         }
         return result;
+        //throw new RuntimeException("Product not found");
     }
 
     private boolean contains(String field, String target) {
         return field.toLowerCase().contains(target);
     }
 
-    public ArrayList<Product> filter(String type) {
-        ArrayList<Product> result = new ArrayList<>();
+    public List<Product> filter(String type) {
+        List<Product> result = new ArrayList<>();
         for (Product item : items) {
             if (type.equals("caps") && item instanceof Cap) {
                 result.add(item);
@@ -132,7 +134,7 @@ public class ProductManager {
                 return item;
             }
         }
-        return null;
+        throw new RuntimeException("Product not founf");
     }
 
     public void removed(long id) {
@@ -142,6 +144,7 @@ public class ProductManager {
                 return;
             }
         }
+        throw new RuntimeException("Product not found");
     }
 
     public Product getById(long id) {
@@ -150,6 +153,6 @@ public class ProductManager {
                 return item;
             }
         }
-        return null;
+        throw new RuntimeException("Product not found");
     }
 }
